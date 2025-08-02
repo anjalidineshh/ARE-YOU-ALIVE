@@ -58,10 +58,10 @@ For Software:
 A fortune cookie is generated 
 
 ![<img width="1023" height="733" alt="image" src="https://github.com/user-attachments/assets/e0e09c51-0800-4ad3-a4fb-228ec1fe5123" />]
-*Add caption explaining what this shows*
+Excuse generator as to why you died.
 
 ![<img width="686" height="824" alt="image" src="https://github.com/user-attachments/assets/8cd6fd8d-a0c3-4b1a-9f76-7bf521198d6a" />]
-*Add caption explaining what this shows*
+Are you alive? A yes or no question.
 
 # Diagrams
 ![Workflow](Add your workflow/architecture diagram here)
