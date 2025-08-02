@@ -1,0 +1,99 @@
+#cookieSection, #excuseSection {
+  display: none;
+}
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #fefae0;
+  text-align: center;
+  padding: 40px;
+  color: #5d4037;
+}
+
+h1 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+
+h2 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.reset-button {
+  font-size: 1rem;
+  padding: 8px 16px;
+  margin-top: 50px;
+  background-color: #8d99ae;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.reset-button:hover {
+  background-color: #6c757d;
+}
+
+
+.button {
+  font-size: 1.5rem;
+  padding: 10px 20px;
+  margin: 10px;
+  cursor: pointer;
+  background-color: #f77f00;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: #d62828;
+}
+
+#cookieSection,
+#excuseSection {
+  margin-top: 30px;
+  display: none;
+}
+
+#cookieImg {
+  width: 300px;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: transform 0.3s;
+}
+
+#cookieImg:active {
+  transform: scale(0.95);
+}
+
+#fortuneText,
+#excuseText {
+  font-size: 1.3rem;
+  margin-top: 20px;
+  font-style: italic;
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+#cookieSection,
+#excuseSection {
+  display: none;
+  animation: fadeIn 1s ease forwards;
+}
+@keyframes crack {
+  0% { transform: rotate(0deg); }
+  20% { transform: rotate(10deg); }
+  40% { transform: rotate(-10deg); }
+  60% { transform: rotate(10deg); }
+  80% { transform: rotate(-10deg); }
+  100% { transform: rotate(0deg); }
+}
+
+.crack-anim {
+  animation: crack 0.5s ease;
+}

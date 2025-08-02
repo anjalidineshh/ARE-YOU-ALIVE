@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Are You Alive?</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px 30px;
+      font-size: 20px;
+    }
+    
+    #questionContainer {
+      margin-bottom: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .button {
+      padding: 15px 30px;
+      margin: 15px;
+      font-size: 24px;
+      cursor: pointer;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      min-width: 150px;
+    }
+    
+    .button:hover {
+      background-color: #45a049;
+    }
+    
+    #cookieSection, #excuseSection, #cheersSection {
+      display: none;
+      margin-top: 20px;
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    #fortuneText, #excuseText {
+      margin: 20px 0 15px 0;
+      padding: 20px;
+      background-color: #f8f8f8;
+      border-radius: 10px;
+      font-size: 24px;
+      max-width: 80%;
+    }
+    
+    #buttonsContainer {
+      margin: 20px 0;
+    }
+    
+    img {
+      margin: 15px auto;
+      border-radius: 12px;
+      display: block;
+      width: 400px; /* Consistent 400px width for all images */
+      height: auto;
+      cursor: pointer;
+    }
+    
+    h1 {
+      font-size: 48px;
+      margin-bottom: 20px;
+    }
+    
+    h2 {
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
+    
+    .exit-button, .done-button {
+      background-color: #f44336;
+      margin: 15px 0 30px 0;
+      font-size: 24px;
+      padding: 15px 30px;
+    }
+    
+    .exit-button:hover, .done-button:hover {
+      background-color: #d32f2f;
+    }
+    
+    .done-button {
+      background-color: #2196F3;
+    }
+    
+    .done-button:hover {
+      background-color: #0b7dda;
+    }
+    
+    .content-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      padding-top: 0;
+    }
+    
+    p {
+      font-size: 24px;
+      margin: 15px 0;
+    }
+    
+    #excusePrompt {
+      font-size: 24px;
+      margin: 15px 0;
+      font-style: italic;
+    }
+    
+    .button-group {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+    }
+  </style>
+</head>
+<body>
+  <div id="questionContainer">
+    <h1>Are You Alive?</h1>
+    <img src="aliveee.jpg" alt="Are You Alive Photo" width="400">
+    <div id="buttonsContainer">
+      <button class="button" onclick="answer('yes')">Yes</button>
+      <button class="button" onclick="answer('no')">No</button>
+    </div>
+  </div>
+
+  <div id="cookieSection" class="content-wrapper">
+    <h2>Yay!! Here's a Fortune Cookie 🍪</h2>
+    <img id="cookieImg" src="fortune_cookie.jpg" alt="Fortune Cookie" onclick="crackCookie()" width="400">
+    <div id="fortuneText"></div>
+    <div class="button-group">
+      <button class="button done-button" onclick="showCheers()">Done</button>
+      <button class="button exit-button" onclick="resetToMain()">Exit</button>
+    </div>
+  </div>
+
+  <div id="excuseSection" class="content-wrapper">
+    <h2>Dead? That's okay. Here's your excuse.💀</h2>
+    <img id="deadImage" src="dead.jpg" alt="Dead Funny Image" width="400" onclick="showExcuse()">
+    <p id="excusePrompt">Tap the image to see your excuse</p>
+    <div id="excuseText"></div>
+    <button class="button exit-button" onclick="resetToMain()">Exit</button>
+  </div>
+
+  <div id="cheersSection" class="content-wrapper">
+    <h2>Cheers to Being Alive! 🥂</h2>
+    <img id="cheersImg" src="cheers.jpg" alt="Cheers Photo" width="500" height = "500"> <!-- Same 400px width as others -->
+    <button class="button exit-button" onclick="resetToMain()">Exit</button>
+  </div>
+
+  <script>
+    const fortunes = [
+      "Wash your hands like you're preparing for surgery.",
+      "Open a random book and read one line dramatically.",
+      "Turn off the lights for 5 seconds and imagine you're in a movie montage.",
+      "Walk backward for 30 seconds. You've undone some sins.",
+      "Your next nap will be legendary."
+    ];
+
+    const excuses = [
+      "Sorry I died, my Wi-Fi cut off and I wandered into the spirit realm.",
+      "I was debugging my soul and forgot to respawn.",
+      "Overdosed on kanji. RIP me.",
+      "Turned into a ghost to avoid responsibilities.",
+      "Took a nap and never woke up. Classic."
+    ];
+
+    function answer(status) {
+      document.getElementById("questionContainer").style.display = "none";
+      document.body.style.paddingTop = "10px";
+
+      setTimeout(() => {
+        if (status === 'yes') {
+          document.getElementById("cookieSection").style.display = "flex";
+          document.getElementById("excuseSection").style.display = "none";
+          document.getElementById("cheersSection").style.display = "none";
+          document.getElementById("cookieImg").src = "fortune_cookie.jpg";
+          document.getElementById("fortuneText").innerText = "";
+        } else {
+          document.getElementById("cookieSection").style.display = "none";
+          document.getElementById("excuseSection").style.display = "flex";
+          document.getElementById("cheersSection").style.display = "none";
+          document.getElementById("excuseText").innerText = "";
+          document.getElementById("excusePrompt").style.display = "block";
+        }
+      }, 500);
+    }
+
+    function crackCookie() {
+      const cookieImg = document.getElementById("cookieImg");
+      const fortuneText = document.getElementById("fortuneText");
+
+      cookieImg.src = "cracked_cookie.jpg";
+      fortuneText.innerText = fortunes[Math.floor(Math.random() * fortunes.length)];
+    }
+    
+    function showExcuse() {
+      const excuseText = document.getElementById("excuseText");
+      const excusePrompt = document.getElementById("excusePrompt");
+      
+      excuseText.innerText = excuses[Math.floor(Math.random() * excuses.length)];
+      excusePrompt.style.display = "none";
+    }
+    
+    function showCheers() {
+      document.getElementById("cookieSection").style.display = "none";
+      document.getElementById("cheersSection").style.display = "flex";
+      document.getElementById("cheersImg").src = "cheers.jpg";
+    }
+    
+    function resetToMain() {
+      // Reset all sections
+      document.getElementById("questionContainer").style.display = "flex";
+      document.getElementById("cookieSection").style.display = "none";
+      document.getElementById("excuseSection").style.display = "none";
+      document.getElementById("cheersSection").style.display = "none";
+      
+      // Reset cookie image if it was cracked
+      document.getElementById("cookieImg").src = "fortune_cookie.jpg";
+      document.getElementById("fortuneText").innerText = "";
+      
+      // Reset excuse prompt
+      document.getElementById("excusePrompt").style.display = "block";
+      document.getElementById("excuseText").innerText = "";
+      
+      // Reset body padding
+      document.body.style.paddingTop = "20px";
+    }
+  </script>
+</body>
+</html>
